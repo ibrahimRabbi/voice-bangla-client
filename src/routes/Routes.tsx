@@ -2,6 +2,13 @@ import { createBrowserRouter } from "react-router-dom";
 import Signup from "../pages/Signup";
 import SignIn from "../pages/SignIn";
 import UpdateProfile from "@/pages/UpdateProfile";
+import PostThread from "@/pages/PostThread";
+import ApplicationLayout from "@/layouts/ApplicationLayout";
+import HomePage from "@/pages/HomePage";
+import ViewDetails from "@/pages/ViewDetails";
+import Trending from "@/pages/Trending";
+import Setting from "@/pages/Setting";
+ 
 
 
 
@@ -9,7 +16,29 @@ import UpdateProfile from "@/pages/UpdateProfile";
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <p>hello</p>
+        element: <ApplicationLayout />,
+        children: [
+            {
+                index: true,
+                element: <HomePage/>
+            },
+            {
+                path: '/:id',
+                element:<ViewDetails/>
+            },
+            {
+                path: 'trending',
+                element:<Trending/>
+            },
+            {
+                path: 'add-thread',
+                element: <PostThread/>
+            },
+            {
+                path: 'settings',
+                element: <Setting/>
+            }
+        ]
     },
     {
         path: '/sign-up',

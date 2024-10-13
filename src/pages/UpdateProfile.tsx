@@ -6,18 +6,48 @@ import { Textarea } from "@/components/ui/textarea";
 import Logo from "@/utils/Logo";
 import { Link } from "react-router-dom";
 import { useForm } from 'react-hook-form';
+import { useGetUserQuery, useUpdateUserMutation } from "@/redux/api/baseApi";
+// import { jwtDecode } from "jwt-decode";
 
-
+const professions = [
+    "Doctor",
+    "Engineer",
+    "Teacher",
+    "Lawyer",
+    "Nurse",
+    "Architect",
+    "Pharmacist",
+    "Electrician",
+    "Carpenter",
+    "Chef",
+    "Accountant",
+    "Dentist",
+    "Journalist",
+    "Firefighter",
+    "Mechanic",
+    "Software Developer",
+    "Musician",
+    "Social Worker",
+    "Hairdresser",
+]
  
 
 const UpdateProfile = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm()
+    const [updateUser] = useUpdateUserMutation()
+    const {data:user,isLoading} = useGetUserQuery({})
+    // const token = localStorage.getItem('token')
+    // const decoded = jwtDecode(token as string)
+    // console.log(decoded)
+ 
+    if (isLoading) {
+        return <h1 className="text-4xl">Loading</h1>
+    }
 
-
-    const submitHandler = (value: any) => {
-        console.log(value)
-        
+    const submitHandler = async (value: any) => {
+        const updating = await updateUser({id:user.response?._id, ...value}).unwrap()
+        console.log(updating)
     }
 
 
@@ -35,7 +65,7 @@ const UpdateProfile = () => {
                     <div className="w-1/2 mt-2 mx-auto">
                         <Label htmlFor="email">Bio*</Label>
                         <Textarea
-                            {...register('description', { required: true, })}
+                            {...register('bio', { required: true, })}
                             placeholder="Describe yourself" />
                         {errors.description?.type === 'required' && <p className='text-red-500 text-sm'>write somthing about your self</p>}
                     </div>
@@ -46,14 +76,14 @@ const UpdateProfile = () => {
                             <Input {...register('name', { required: true })} placeholder="Name" />
                             {errors.name?.type === 'required' && <p className='text-red-500 text-sm'>name is required</p>}
                         </div>
-                        <SelectDropdown />
+                        <SelectDropdown items={professions} selectValue="profession" />
                         <div>
-                            <Input {...register('name', { required: true, })} placeholder="job/profession" />
+                            <Input {...register('division', { required: true, })} placeholder="division/city" />
                             {errors.name?.type === 'required' && <p className='text-red-500 text-sm'>name is required</p>}
                         </div>
-                        <SelectDropdown/>
+                        <SelectDropdown selectValue="sector" items={professions} />
                     </div>
-                    <Button type="submit" className="w-1/2 bg-[#ECE64A] hover:bg-[#dfd936] my-10 mx-auto block">Save</Button>
+                    <Button type="submit" className="w-1/2 text-black font-semibold bg-[#ECE64A] hover:bg-[#dfd936] my-10 mx-auto block">Save</Button>
                 </form>
 
 

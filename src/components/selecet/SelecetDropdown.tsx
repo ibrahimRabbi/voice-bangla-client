@@ -1,15 +1,15 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
-const SelectDropdown = () => {
+const SelectDropdown = ({items,selectValue}:{items:string[],selectValue:string}) => {
     return (
         <Select>
             <SelectTrigger className="w-full">
-                <SelectValue placeholder="Theme" />
+                <SelectValue placeholder={selectValue} />
             </SelectTrigger>
             <SelectContent >
-                <SelectItem value="light">Light</SelectItem>
-                <SelectItem value="dark">Dark</SelectItem>
-                <SelectItem value="system">System</SelectItem>
+                {
+                    items.map(v => <SelectItem key={Math.random()} value={v}>{v}</SelectItem>)
+               }
             </SelectContent>
         </Select>
     );

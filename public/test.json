@@ -1,0 +1,35 @@
+[
+    {
+        "id":"008822@#gk6",
+        "user":{
+            "name":"ibrahim Rabbi",
+            "email":"xyz@gmail.com",
+            "profile": "https://i.ibb.co.com/z5QXvMS/2148859448.jpg"
+        },
+        "topic": "dolor sit amet consectetur adipisicing elit. Quo, odio!",
+        "image":"https://i.ibb.co.com/hMdn5RG/download-3.png",
+        "location": " ",
+        "details" : " Rabbi helloo earum minus nihil optio. Porro corrupti eos quaerat, est dolorem omnis eum aspernatur amet pariatur cumque consectetur minus enim similique laboriosam adipisci itaque quia. Ad eius eveniet enim saepe! Ut, nemo nostrum.",
+        "subTopics" : ["hello","Hello world","shiny"],
+        "likes": 200,
+        "disLikes":6,
+        "postDate": "23/09/2024"
+    },
+    {
+        "id":"0088782@#gk6",
+        "user":{
+            "name":"ibrahim Rabbi",
+            "email":"xyz@gmail.com",
+            "profile": "https://i.ibb.co.com/z5QXvMS/2148859448.jpg"
+        },
+        "topic": "dolor sit amet consectetur adipisicing elit. Quo, odio!",
+        "image":"https://i.ibb.co.com/hMdn5RG/download-3.png",
+        "location": " ",
+        "details" : "earum minus nihil optio. Porro corrupti eos quaerat, est dolorem omnis eum aspernatur amet pariatur cumque consectetur minus enim similique laboriosam adipisci itaque quia. Ad eius eveniet enim saepe! Ut, nemo nostrum.",
+        "subTopics" : ["hello","Hello world","shiny"],
+        "likes": 200,
+        "disLikes":6,
+        "postDate": "23/09/2024"
+    }
+
+]
