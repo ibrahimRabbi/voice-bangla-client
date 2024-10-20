@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea";
 import Logo from "@/utils/Logo";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 import { useGetUserQuery, useUpdateUserMutation } from "@/redux/api/baseApi";
 // import { jwtDecode } from "jwt-decode";
@@ -36,7 +36,8 @@ const UpdateProfile = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm()
     const [updateUser] = useUpdateUserMutation()
-    const {data:user,isLoading} = useGetUserQuery({})
+    const { data: user, isLoading } = useGetUserQuery({})
+    const location = useLocation()
     // const token = localStorage.getItem('token')
     // const decoded = jwtDecode(token as string)
     // console.log(decoded)
@@ -53,16 +54,16 @@ const UpdateProfile = () => {
 
     return (
         <section>
-            <Logo />
-            <div className="pt-28 w-1/2 mx-auto">
-                <div className="w-1/2 mx-auto text-center">
-                    <p className="font-[700] block text-3xl text-[#323232]">Update Your Profile</p>
+            <Logo/>
+            <div className={`${location.pathname === '/profile/update-profile' ? 'pt-44 w-[80%]' :'pt-28 w-1/2'} mx-auto`}>
+                <div className={`w-1/2 ${location.pathname === '/profile/update-profile'? 'hidden':'block'} mx-auto text-center`}>
+                    <p className={`font-[700] block text-3xl text-[#323232]`}>Update Your Profile</p>
                     <img className="w-[200px] inline-block" src="../../public/assets/11 3.png" />
                 </div>
-                <Link className="underline font-bold mt-2 text-center block" to=''>@username</Link>
+                <Link className={`underline font-bold mt-2 text-center block ${location.pathname === '/profile/update-profile' ? 'hidden' : 'block'} `} to=''>@username</Link>
                 
                 <form onSubmit={handleSubmit(submitHandler)} >
-                    <div className="w-1/2 mt-2 mx-auto">
+                    <div className={` mt-2 mx-auto ${location.pathname === '/profile/update-profile' ? 'w-[70%]' : 'w-1/2'}`}>
                         <Label htmlFor="email">Bio*</Label>
                         <Textarea
                             {...register('bio', { required: true, })}

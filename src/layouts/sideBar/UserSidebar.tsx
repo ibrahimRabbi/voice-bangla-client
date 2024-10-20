@@ -1,6 +1,6 @@
  
 import { NavLink } from 'react-router-dom';
-
+import { MdDashboard } from "react-icons/md";
 
 
 const items = [
@@ -26,9 +26,10 @@ const items = [
         icon: '../../../public/icons/Settings.png'
     },
     {
-        navigate: '/zjxkzx',
+        navigate: 'profile',
         icon: '../../../public/icons/Test Account.png'
     },
+    
 ]
 
 
@@ -42,7 +43,11 @@ const UserSidebar = () => {
                 items.map(v => <NavLink className={({isActive})=> isActive? 'bg-slate-300 w-full':''} key={Math.random()} to={v.navigate}>
                     <img className='mx-auto lg:block inline-block' src={v.icon} />
                 </NavLink> )
-             }
+            }
+            <NavLink to='/dashboard'>
+                 <MdDashboard className='text-3xl'/>
+
+            </NavLink>
         </div>
     );
 };

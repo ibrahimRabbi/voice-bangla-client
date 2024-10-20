@@ -8,6 +8,10 @@ import HomePage from "@/pages/HomePage";
 import ViewDetails from "@/pages/ViewDetails";
 import Trending from "@/pages/Trending";
 import Setting from "@/pages/Setting";
+import Notifications from "@/pages/Notifications";
+import Profile from "@/pages/Profile";
+import MyPost from "@/components/profile/MyPost";
+import PostApproved from "@/pages/admin/PostApproved";
  
 
 
@@ -37,7 +41,30 @@ const router = createBrowserRouter([
             {
                 path: 'settings',
                 element: <Setting/>
-            }
+            },
+            {
+                path: 'notifications',
+                element: <Notifications/>
+            },
+            {
+                path: 'profile',
+                element: <Profile />,
+                children: [
+                    {
+                        index: true,
+                        element:<MyPost/>
+                    },
+                    {
+                        path: 'update-profile',
+                        element:<UpdateProfile/>
+                    }
+                ]
+            },
+
+            {
+                path: 'dashboard',
+                element: <PostApproved/>
+            },
         ]
     },
     {

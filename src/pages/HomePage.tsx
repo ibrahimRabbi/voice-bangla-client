@@ -1,29 +1,32 @@
  import Card from "@/components/ui/Card";
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
-import { EffectFade, Navigation } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/effect-creative';
-import 'swiper/css/navigation';
 import Addthread from "@/components/AddThread/Addthread";
 import { useGetThreadsQuery } from "@/redux/api/baseApi";
 import { useGetUserQuery } from "@/redux/api/baseApi";
-// import toast from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 import PostAction from "@/components/actions/PostAction";
+import { useRef } from "react";
 
- 
+import { Swiper as SwiperType } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+
+
+
+
 
 
 
 
 const HomePage = () => {
-
-    const swiper = useSwiper()
+ 
     const { data:threads } = useGetThreadsQuery({})
     const { data: user, isLoading:userIsLoading } = useGetUserQuery({})
     const navigate = useNavigate()
     const location = useLocation()
-    
+    const swiperRef = useRef<SwiperType>();
 
 
 
@@ -36,7 +39,6 @@ const HomePage = () => {
     } 
 
 
-
  
     return (
         
@@ -44,22 +46,24 @@ const HomePage = () => {
             <Addthread/>
             <div className={`mt-10`}>
                 <Swiper
-                    modules={[EffectFade, Navigation]}
-                    effect={'fade'}
-                    spaceBetween={50}
-                    slidesPerView={3}
-                    
+                    slidesPerView={'auto'}
+                    centeredSlides={true}
+                    spaceBetween={30}
+                    onBeforeInit={(swiper) => {
+                        swiperRef.current = swiper;
+                    }}
+                    modules={[Navigation]}
                 >
                     {
-                        threads?.response.map((v: any) => <SwiperSlide key={v._id}><Card key={v.id} data={v} /></SwiperSlide>)
+                        threads?.response?.map((v: any) => <SwiperSlide key={v._id}><Card key={v.id} data={v} /></SwiperSlide>)
                     }
+
+                    <div className={`flex justify-between items-center mt-10`}>
+                        <button onClick={() =>swiperRef.current?.slidePrev()}><img src='../../public/icons/Back.png' /></button>
+                        <button onClick={() => swiperRef.current?.slideNext()}><img src='../../public/icons/Right.png' /></button>
+                    </div>
                 </Swiper>
-           </div>
-            
-            <div className={`flex justify-between items-center mt-10`}>
-                <button onClick={()=> swiper.slidePrev()}><img src='../../public/icons/Back.png'/></button>
-                <button onClick={() => swiper.slideNext()}><img src='../../public/icons/Right.png'/></button>
-            </div>
+           </div>     
 
             <div className="border mt-12">
                 <PostAction />
@@ -70,4 +74,4 @@ const HomePage = () => {
 
 export default HomePage;
 
-// onSwiper = {(swiper) => console.log(swiper)}
+ 

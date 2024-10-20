@@ -23,28 +23,28 @@ const Setting = () => {
                 </Link>
 
 
-                <div className='bg-base-200 border rounded-md py-5 space-y-2 text-center   shadow-md'>
+                <Link to='/notifications' className='bg-base-200 border rounded-md py-5 space-y-2 text-center   shadow-md'>
                     <FaRegBell className="text-3xl block mx-auto"/>
                     <p className='text-zinc-700 font-semibold'>Notifications</p>
-                </div>
+                </Link>
 
 
-                <div className='bg-base-200 border rounded-md py-5 space-y-2 text-center  shadow-md'>
+                <Link to='/' className='bg-base-200 border rounded-md py-5 space-y-2 text-center  shadow-md'>
                     <MdOutlineSecurity className="text-3xl block mx-auto" />
                     <p className='text-zinc-700 font-semibold'>Privacy & Policy</p>
-                </div>
+                </Link>
 
 
-                <div className='bg-base-200 border rounded-md py-5 space-y-2 text-center shadow-md'>
+                <Link to='/' className='bg-base-200 border rounded-md py-5 space-y-2 text-center shadow-md'>
                     <MdOutlineDarkMode className="text-3xl block mx-auto" />
                     <p className='text-zinc-700 font-semibold'>Dark Mode</p>
-                </div>
+                </Link>
 
 
-                <div className='bg-base-200 border rounded-md py-5 space-y-2 text-center shadow-md'>
+                <Link to='/' className='bg-base-200 border rounded-md py-5 space-y-2 text-center shadow-md'>
                     <MdOutlineMail className="text-3xl block mx-auto" />
                     <p className='text-zinc-700 font-semibold'>Contact Information</p>
-                </div>
+                </Link>
 
 
                 <Link to='/' className='bg-base-200 border rounded-md py-5 space-y-2 text-center shadow-md'>
@@ -58,7 +58,7 @@ const Setting = () => {
                 </Link>
 
 
-                <Link to='logout'  className='bg-red-100 border rounded-md py-5 space-y-2 text-center shadow-md'>
+                <Link to='/logout'  className='bg-red-100 border rounded-md py-5 space-y-2 text-center shadow-md'>
                     <IoIosLogOut className="text-3xl block mx-auto" />
                     <p className='text-zinc-700 font-semibold'>Log Out</p>
                 </Link>

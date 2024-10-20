@@ -8,8 +8,11 @@ import PostAction from "../actions/PostAction";
 
 const Card = ({ data }: { data: any }) => {
      const location = useLocation()
-console.log(location)
  
+ 
+    
+    
+    
     return (
         <div className={`w-full p-4 border ${data?.category == 'community' ? 'bg-green-100' : data?.category == 'emergancy' ? 'bg-amber-100' : data?.category == 'report' ? 'bg-cyan-100' : data?.category == 'thread' ? 'bg-zinc-100' : data?.category == 'others' ? 'bg-red-100' : 'bg-slate-100'}`}>
 
@@ -26,7 +29,7 @@ console.log(location)
 
                     </div>
                     <div>
-                        <p className="bg-zinc-900 p-1 text-sm text-white rounded-lg font-semibold">Followed</p>
+                        <p className={`bg-zinc-900 p-1 ${location.pathname === '/profile'? 'hidden':'block'} text-sm text-white rounded-lg font-semibold`}>Followed</p>
                     </div>
                 </div>
 
