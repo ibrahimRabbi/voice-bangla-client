@@ -5,18 +5,12 @@ import { useGetUserQuery } from "@/redux/api/baseApi";
 import { useLocation, useNavigate } from "react-router-dom";
 import PostAction from "@/components/actions/PostAction";
 import { useRef } from "react";
-
 import { Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/navigation';
-
-
-
-
-
 
 
 
@@ -65,7 +59,7 @@ const HomePage = () => {
                 </Swiper>
            </div>     
 
-            <div className="border mt-12">
+            <div className="border mt-10">
                 <PostAction />
             </div>
         </section>
